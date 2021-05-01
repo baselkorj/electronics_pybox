@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
+    <width>391</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Electronics PyBox</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="one_up">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -26,7 +26,7 @@
     <string>▲</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="one_down">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -39,7 +39,7 @@
     <string>▼</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="two_up">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -52,7 +52,7 @@
     <string>▲</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="three_up">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -65,7 +65,7 @@
     <string>▲</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="four_up">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -78,7 +78,7 @@
     <string>▲</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_6">
+  <widget class="QPushButton" name="two_down">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -91,7 +91,7 @@
     <string>▼</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_7">
+  <widget class="QPushButton" name="three_down">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -104,7 +104,7 @@
     <string>▼</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_8">
+  <widget class="QPushButton" name="four_down">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -138,7 +138,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_16">
+  <widget class="QPushButton" name="calculate">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -151,7 +151,7 @@
     <string>Calculate</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="res_value">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -172,7 +172,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="stripe_2">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -191,7 +191,7 @@
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QFrame" name="frame_2">
+  <widget class="QFrame" name="stripe_1">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -228,7 +228,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QFrame" name="frame_4">
+   <widget class="QFrame" name="stripe_3">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -248,7 +248,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QFrame" name="frame_5">
+  <widget class="QFrame" name="stripe_4">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -267,7 +267,7 @@
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QFrame" name="frame_6">
+  <widget class="QFrame" name="res_background">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -286,7 +286,7 @@
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QFrame" name="frame_7">
+  <widget class="QFrame" name="lead_left">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -305,7 +305,7 @@
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QFrame" name="frame_8">
+  <widget class="QFrame" name="lead_right">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -324,24 +324,64 @@
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <zorder>frame_6</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder>pushButton_5</zorder>
-  <zorder>pushButton_6</zorder>
-  <zorder>pushButton_7</zorder>
-  <zorder>pushButton_8</zorder>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>87</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Four</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Five</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Six</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="exit">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>250</y>
+     <width>86</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </widget>
+  <zorder>res_background</zorder>
+  <zorder>one_up</zorder>
+  <zorder>one_down</zorder>
+  <zorder>two_up</zorder>
+  <zorder>three_up</zorder>
+  <zorder>four_up</zorder>
+  <zorder>two_down</zorder>
+  <zorder>three_down</zorder>
+  <zorder>four_down</zorder>
   <zorder>pushButton_10</zorder>
-  <zorder>pushButton_16</zorder>
-  <zorder>label</zorder>
-  <zorder>frame</zorder>
-  <zorder>frame_2</zorder>
+  <zorder>calculate</zorder>
+  <zorder>res_value</zorder>
+  <zorder>stripe_2</zorder>
+  <zorder>stripe_1</zorder>
   <zorder>frame_3</zorder>
-  <zorder>frame_5</zorder>
-  <zorder>frame_7</zorder>
-  <zorder>frame_8</zorder>
+  <zorder>stripe_4</zorder>
+  <zorder>lead_left</zorder>
+  <zorder>lead_right</zorder>
+  <zorder>comboBox</zorder>
+  <zorder>exit</zorder>
  </widget>
  <resources/>
  <connections/>
