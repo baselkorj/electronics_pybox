@@ -1,56 +1,100 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'layout.ui'
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+# Create Variables
+# Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
+colors = ["#000000", "#8B4513", "#B22222", "#FF8C00", "#FFD700", "#6B8E23", "#4682B4", "#800080", "#696969", "#F5F5F5", "#DAA520", "#C0C0C0"]
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(391, 300)
+
+        # 1st Up
         self.one_up = QtWidgets.QPushButton(Dialog)
         self.one_up.setGeometry(QtCore.QRect(140, 40, 21, 21))
         self.one_up.setObjectName("one_up")
+
+        # 1st Band
+        self.stripe_1 = QtWidgets.QFrame(Dialog)
+        self.stripe_1.setGeometry(QtCore.QRect(140, 70, 21, 61))
+        self.stripe_1.setStyleSheet("background-color: " + colors[2] + ";")
+        self.stripe_1.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.stripe_1.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.stripe_1.setObjectName("stripe_1")
+
+        # 1st Down
         self.one_down = QtWidgets.QPushButton(Dialog)
         self.one_down.setGeometry(QtCore.QRect(140, 140, 21, 21))
         self.one_down.setObjectName("one_down")
+
+        # 2nd Up
         self.two_up = QtWidgets.QPushButton(Dialog)
         self.two_up.setGeometry(QtCore.QRect(170, 40, 21, 21))
         self.two_up.setObjectName("two_up")
-        self.three_up = QtWidgets.QPushButton(Dialog)
-        self.three_up.setGeometry(QtCore.QRect(200, 40, 21, 21))
-        self.three_up.setObjectName("three_up")
-        self.four_up = QtWidgets.QPushButton(Dialog)
-        self.four_up.setGeometry(QtCore.QRect(230, 40, 21, 21))
-        self.four_up.setObjectName("four_up")
+
+        # 2nd Band
+        self.stripe_2 = QtWidgets.QFrame(Dialog)
+        self.stripe_2.setGeometry(QtCore.QRect(170, 70, 21, 61))
+        self.stripe_2.setStyleSheet("background-color: " + colors[6] + ";")
+        self.stripe_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.stripe_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.stripe_2.setObjectName("stripe_2")
+
+        # 2nd Down
         self.two_down = QtWidgets.QPushButton(Dialog)
         self.two_down.setGeometry(QtCore.QRect(170, 140, 21, 21))
         self.two_down.setObjectName("two_down")
+
+        # 3rd Up
+        self.three_up = QtWidgets.QPushButton(Dialog)
+        self.three_up.setGeometry(QtCore.QRect(200, 40, 21, 21))
+        self.three_up.setObjectName("three_up")
+
+        # 3rd Band
+        self.stripe_3 = QtWidgets.QFrame(Dialog)
+        self.stripe_3.setGeometry(QtCore.QRect(200, 70, 21, 61))
+        self.stripe_3.setStyleSheet("background-color: " + colors[5] + ";")
+        self.stripe_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.stripe_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.stripe_3.setObjectName("stripe_3")
+
+        # 3rd Down
         self.three_down = QtWidgets.QPushButton(Dialog)
         self.three_down.setGeometry(QtCore.QRect(200, 140, 21, 21))
         self.three_down.setObjectName("three_down")
+
+        # 4th Up
+        self.four_up = QtWidgets.QPushButton(Dialog)
+        self.four_up.setGeometry(QtCore.QRect(230, 40, 21, 21))
+        self.four_up.setObjectName("four_up")
+
+        # 4th Band
+        self.stripe_4 = QtWidgets.QFrame(Dialog)
+        self.stripe_4.setGeometry(QtCore.QRect(230, 70, 21, 61))
+        self.stripe_4.setStyleSheet("background-color: " + colors[3] + ";")
+        self.stripe_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.stripe_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.stripe_4.setObjectName("stripe_4")
+
+        # 4th Down
         self.four_down = QtWidgets.QPushButton(Dialog)
         self.four_down.setGeometry(QtCore.QRect(230, 140, 21, 21))
+        self.four_down.setObjectName("four_down")
+
         font = QtGui.QFont()
         font.setBold(True)
         font.setItalic(False)
         font.setUnderline(False)
         font.setWeight(75)
         self.four_down.setFont(font)
-        self.four_down.setObjectName("four_down")
-        self.pushButton_10 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_10.setGeometry(QtCore.QRect(170, 70, 21, 60))
-        self.pushButton_10.setText("")
-        self.pushButton_10.setObjectName("pushButton_10")
+        
+
+        # Calculate Button
         self.calculate = QtWidgets.QPushButton(Dialog)
         self.calculate.setGeometry(QtCore.QRect(150, 250, 86, 32))
         self.calculate.setObjectName("calculate")
+        
+        # Resistor Value Label
         self.res_value = QtWidgets.QLabel(Dialog)
         self.res_value.setGeometry(QtCore.QRect(0, 190, 401, 41))
         font = QtGui.QFont()
@@ -58,63 +102,45 @@ class Ui_Dialog(object):
         self.res_value.setFont(font)
         self.res_value.setAlignment(QtCore.Qt.AlignCenter)
         self.res_value.setObjectName("res_value")
-        self.stripe_2 = QtWidgets.QFrame(Dialog)
-        self.stripe_2.setGeometry(QtCore.QRect(170, 70, 21, 61))
-        self.stripe_2.setStyleSheet("background-color: rgb(0, 85, 127);")
-        self.stripe_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.stripe_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.stripe_2.setObjectName("stripe_2")
-        self.stripe_1 = QtWidgets.QFrame(Dialog)
-        self.stripe_1.setGeometry(QtCore.QRect(140, 70, 21, 61))
-        self.stripe_1.setStyleSheet("background-color: rgb(182, 41, 41);")
-        self.stripe_1.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.stripe_1.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.stripe_1.setObjectName("stripe_1")
-        self.frame_3 = QtWidgets.QFrame(Dialog)
-        self.frame_3.setGeometry(QtCore.QRect(200, 70, 21, 61))
-        self.frame_3.setStyleSheet("background-color: rgb(170, 0, 0);")
-        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.stripe_3 = QtWidgets.QFrame(self.frame_3)
-        self.stripe_3.setGeometry(QtCore.QRect(0, 0, 21, 61))
-        self.stripe_3.setStyleSheet("background-color: rgb(100, 170, 34);")
-        self.stripe_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.stripe_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.stripe_3.setObjectName("stripe_3")
-        self.stripe_4 = QtWidgets.QFrame(Dialog)
-        self.stripe_4.setGeometry(QtCore.QRect(230, 70, 21, 61))
-        self.stripe_4.setStyleSheet("background-color: rgb(255, 165, 38);")
-        self.stripe_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.stripe_4.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.stripe_4.setObjectName("stripe_4")
+
+        # Resistor Body
         self.res_background = QtWidgets.QFrame(Dialog)
         self.res_background.setGeometry(QtCore.QRect(120, 70, 151, 61))
         self.res_background.setStyleSheet("background-color: rgb(159, 159, 159);")
         self.res_background.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.res_background.setFrameShadow(QtWidgets.QFrame.Raised)
         self.res_background.setObjectName("res_background")
+
+        # Left Lead
         self.lead_left = QtWidgets.QFrame(Dialog)
         self.lead_left.setGeometry(QtCore.QRect(80, 90, 41, 21))
         self.lead_left.setStyleSheet("background-color: rgb(194, 129, 0);")
         self.lead_left.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.lead_left.setFrameShadow(QtWidgets.QFrame.Raised)
         self.lead_left.setObjectName("lead_left")
+
+        # Right Lead
         self.lead_right = QtWidgets.QFrame(Dialog)
         self.lead_right.setGeometry(QtCore.QRect(270, 90, 41, 21))
         self.lead_right.setStyleSheet("background-color: rgb(194, 129, 0);")
         self.lead_right.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.lead_right.setFrameShadow(QtWidgets.QFrame.Raised)
         self.lead_right.setObjectName("lead_right")
+
+        # Combo Box
         self.comboBox = QtWidgets.QComboBox(Dialog)
         self.comboBox.setGeometry(QtCore.QRect(20, 250, 87, 30))
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+
+        # Exit Button
         self.exit = QtWidgets.QPushButton(Dialog)
         self.exit.setGeometry(QtCore.QRect(280, 250, 86, 32))
         self.exit.setObjectName("exit")
+
+        # Raise Functions
         self.res_background.raise_()
         self.one_up.raise_()
         self.one_down.raise_()
@@ -124,12 +150,11 @@ class Ui_Dialog(object):
         self.two_down.raise_()
         self.three_down.raise_()
         self.four_down.raise_()
-        self.pushButton_10.raise_()
         self.calculate.raise_()
         self.res_value.raise_()
         self.stripe_2.raise_()
         self.stripe_1.raise_()
-        self.frame_3.raise_()
+        self.stripe_3.raise_()
         self.stripe_4.raise_()
         self.lead_left.raise_()
         self.lead_right.raise_()
@@ -139,6 +164,8 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+    # Add Text to Widgets
+    # Created in a separate function to allow for Translations
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Electronics PyBox"))
