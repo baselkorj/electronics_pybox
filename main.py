@@ -3,12 +3,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 # Create Variables
 # Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
 colors = ["#000000", "#8B4513", "#B22222", "#FF8C00", "#FFD700", "#6B8E23", "#4682B4", "#800080", "#696969", "#F5F5F5", "#DAA520", "#C0C0C0"]
-s1_color = 2
-s2_color = 6
-s3_color = 5
-s4_color = 3
 
 class Ui_Dialog(object):
+    s1_color = 2
+    s2_color = 6
+    s3_color = 5
+    s4_color = 3
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(391, 300)
@@ -17,11 +18,12 @@ class Ui_Dialog(object):
         self.one_up = QtWidgets.QPushButton(Dialog)
         self.one_up.setGeometry(QtCore.QRect(140, 40, 21, 21))
         self.one_up.setObjectName("one_up")
+        self.one_up.clicked.connect(lambda: self.increment("s1_color", "stripe_1"))
 
         # 1st Band
         self.stripe_1 = QtWidgets.QFrame(Dialog)
         self.stripe_1.setGeometry(QtCore.QRect(140, 70, 21, 61))
-        self.stripe_1.setStyleSheet("background-color: " + colors[s1_color] + ";")
+        self.stripe_1.setStyleSheet("background-color: " + colors[self.s1_color] + ";")
         self.stripe_1.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_1.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_1.setObjectName("stripe_1")
@@ -30,16 +32,18 @@ class Ui_Dialog(object):
         self.one_down = QtWidgets.QPushButton(Dialog)
         self.one_down.setGeometry(QtCore.QRect(140, 140, 21, 21))
         self.one_down.setObjectName("one_down")
+        self.one_down.clicked.connect(lambda: self.decrement("s1_color", "stripe_1"))
 
         # 2nd Up
         self.two_up = QtWidgets.QPushButton(Dialog)
         self.two_up.setGeometry(QtCore.QRect(170, 40, 21, 21))
         self.two_up.setObjectName("two_up")
+        self.two_up.clicked.connect(lambda: self.increment("s2_color", "stripe_2"))
 
         # 2nd Band
         self.stripe_2 = QtWidgets.QFrame(Dialog)
         self.stripe_2.setGeometry(QtCore.QRect(170, 70, 21, 61))
-        self.stripe_2.setStyleSheet("background-color: " + colors[s2_color] + ";")
+        self.stripe_2.setStyleSheet("background-color: " + colors[self.s2_color] + ";")
         self.stripe_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_2.setObjectName("stripe_2")
@@ -48,16 +52,18 @@ class Ui_Dialog(object):
         self.two_down = QtWidgets.QPushButton(Dialog)
         self.two_down.setGeometry(QtCore.QRect(170, 140, 21, 21))
         self.two_down.setObjectName("two_down")
+        self.two_down.clicked.connect(lambda: self.decrement("s2_color", "stripe_2"))
 
         # 3rd Up
         self.three_up = QtWidgets.QPushButton(Dialog)
         self.three_up.setGeometry(QtCore.QRect(200, 40, 21, 21))
         self.three_up.setObjectName("three_up")
+        self.three_up.clicked.connect(lambda: self.increment("s3_color", "stripe_3"))
 
         # 3rd Band
         self.stripe_3 = QtWidgets.QFrame(Dialog)
         self.stripe_3.setGeometry(QtCore.QRect(200, 70, 21, 61))
-        self.stripe_3.setStyleSheet("background-color: " + colors[s3_color] + ";")
+        self.stripe_3.setStyleSheet("background-color: " + colors[self.s3_color] + ";")
         self.stripe_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_3.setObjectName("stripe_3")
@@ -66,16 +72,18 @@ class Ui_Dialog(object):
         self.three_down = QtWidgets.QPushButton(Dialog)
         self.three_down.setGeometry(QtCore.QRect(200, 140, 21, 21))
         self.three_down.setObjectName("three_down")
+        self.three_down.clicked.connect(lambda: self.decrement("s3_color", "stripe_3"))
 
         # 4th Up
         self.four_up = QtWidgets.QPushButton(Dialog)
         self.four_up.setGeometry(QtCore.QRect(230, 40, 21, 21))
         self.four_up.setObjectName("four_up")
+        self.four_up.clicked.connect(lambda: self.increment("s4_color", "stripe_4"))
 
         # 4th Band
         self.stripe_4 = QtWidgets.QFrame(Dialog)
         self.stripe_4.setGeometry(QtCore.QRect(230, 70, 21, 61))
-        self.stripe_4.setStyleSheet("background-color: " + colors[s4_color] + ";")
+        self.stripe_4.setStyleSheet("background-color: " + colors[self.s4_color] + ";")
         self.stripe_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_4.setObjectName("stripe_4")
@@ -84,6 +92,8 @@ class Ui_Dialog(object):
         self.four_down = QtWidgets.QPushButton(Dialog)
         self.four_down.setGeometry(QtCore.QRect(230, 140, 21, 21))
         self.four_down.setObjectName("four_down")
+        self.four_down.clicked.connect(lambda: self.decrement("s4_color", "stripe_4"))
+
 
         font = QtGui.QFont()
         font.setBold(True)
@@ -143,6 +153,7 @@ class Ui_Dialog(object):
         self.exit = QtWidgets.QPushButton(Dialog)
         self.exit.setGeometry(QtCore.QRect(280, 250, 86, 32))
         self.exit.setObjectName("exit")
+        self.exit.clicked.connect(self.close_window)
 
         # Raise Functions
         self.res_background.raise_()
@@ -187,6 +198,33 @@ class Ui_Dialog(object):
         self.comboBox.setItemText(1, _translate("Dialog", "Five"))
         self.comboBox.setItemText(2, _translate("Dialog", "Six"))
         self.exit.setText(_translate("Dialog", "Exit"))
+    
+    # Button Actions
+    # Exit Button
+    def close_window(self):
+        exit()
+    
+    # Increment Function
+    def increment(self, attribute, band):
+        if getattr(self, attribute) < 11:
+            temp = getattr(self, attribute) + 1
+            setattr(self, attribute, temp)
+            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
+        else:
+            temp = 0
+            setattr(self, attribute, temp)
+            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
+    
+    # Decrement Function
+    def decrement(self, attribute, band):
+        if getattr(self, attribute) > 0:
+            temp = getattr(self, attribute) - 1
+            setattr(self, attribute, temp)
+            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
+        else:
+            temp = 11
+            setattr(self, attribute, temp)
+            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
 
 
 if __name__ == "__main__":
