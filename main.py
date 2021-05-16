@@ -3,6 +3,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 # Create Variables
 # Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
 colors = ["#000000", "#8B4513", "#B22222", "#FF8C00", "#FFD700", "#6B8E23", "#4682B4", "#800080", "#696969", "#F5F5F5", "#DAA520", "#C0C0C0"]
+s1_color = 2
+s2_color = 6
+s3_color = 5
+s4_color = 3
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -17,7 +21,7 @@ class Ui_Dialog(object):
         # 1st Band
         self.stripe_1 = QtWidgets.QFrame(Dialog)
         self.stripe_1.setGeometry(QtCore.QRect(140, 70, 21, 61))
-        self.stripe_1.setStyleSheet("background-color: " + colors[2] + ";")
+        self.stripe_1.setStyleSheet("background-color: " + colors[s1_color] + ";")
         self.stripe_1.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_1.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_1.setObjectName("stripe_1")
@@ -35,7 +39,7 @@ class Ui_Dialog(object):
         # 2nd Band
         self.stripe_2 = QtWidgets.QFrame(Dialog)
         self.stripe_2.setGeometry(QtCore.QRect(170, 70, 21, 61))
-        self.stripe_2.setStyleSheet("background-color: " + colors[6] + ";")
+        self.stripe_2.setStyleSheet("background-color: " + colors[s2_color] + ";")
         self.stripe_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_2.setObjectName("stripe_2")
@@ -53,7 +57,7 @@ class Ui_Dialog(object):
         # 3rd Band
         self.stripe_3 = QtWidgets.QFrame(Dialog)
         self.stripe_3.setGeometry(QtCore.QRect(200, 70, 21, 61))
-        self.stripe_3.setStyleSheet("background-color: " + colors[5] + ";")
+        self.stripe_3.setStyleSheet("background-color: " + colors[s3_color] + ";")
         self.stripe_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_3.setObjectName("stripe_3")
@@ -71,7 +75,7 @@ class Ui_Dialog(object):
         # 4th Band
         self.stripe_4 = QtWidgets.QFrame(Dialog)
         self.stripe_4.setGeometry(QtCore.QRect(230, 70, 21, 61))
-        self.stripe_4.setStyleSheet("background-color: " + colors[3] + ";")
+        self.stripe_4.setStyleSheet("background-color: " + colors[s4_color] + ";")
         self.stripe_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.stripe_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.stripe_4.setObjectName("stripe_4")
