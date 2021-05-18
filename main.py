@@ -2,7 +2,21 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 # Create Variables
 # Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
-colors = ["#000000", "#8B4513", "#B22222", "#FF8C00", "#FFD700", "#6B8E23", "#4682B4", "#800080", "#696969", "#F5F5F5", "#DAA520", "#C0C0C0"]
+colors = [
+    "#000000",
+    "#8B4513",
+    "#B22222",
+    "#FF8C00",
+    "#FFD700",
+    "#6B8E23",
+    "#4682B4",
+    "#800080",
+    "#696969",
+    "#F5F5F5",
+    "#DAA520",
+    "#C0C0C0",
+]
+
 
 class Ui_Dialog(object):
     s1_color = 2
@@ -94,20 +108,21 @@ class Ui_Dialog(object):
         self.four_down.setObjectName("four_down")
         self.four_down.clicked.connect(lambda: self.decrement("s4_color", "stripe_4"))
 
-
         font = QtGui.QFont()
         font.setBold(True)
         font.setItalic(False)
         font.setUnderline(False)
         font.setWeight(75)
         self.four_down.setFont(font)
-        
 
         # Calculate Button
-        self.calculate = QtWidgets.QPushButton(Dialog)
+        self.calculate = QtWidgets.QPushButton(
+            Dialog,
+        )
         self.calculate.setGeometry(QtCore.QRect(150, 250, 86, 32))
         self.calculate.setObjectName("calculate")
-        
+        self.calculate.clicked.connect(lambda: self.calculate_it())
+
         # Resistor Value Label
         self.res_value = QtWidgets.QLabel(Dialog)
         self.res_value.setGeometry(QtCore.QRect(0, 190, 401, 41))
@@ -198,37 +213,55 @@ class Ui_Dialog(object):
         self.comboBox.setItemText(1, _translate("Dialog", "Five"))
         self.comboBox.setItemText(2, _translate("Dialog", "Six"))
         self.exit.setText(_translate("Dialog", "Exit"))
-    
+
     # Button Actions
     # Exit Button
     def close_window(self):
         exit()
-    
+
     # Increment Function
     def increment(self, attribute, band):
         if getattr(self, attribute) < 11:
             temp = getattr(self, attribute) + 1
             setattr(self, attribute, temp)
-            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
+            getattr(self, band).setStyleSheet(
+                "background-color: " + colors[getattr(self, attribute)] + ";"
+            )
         else:
             temp = 0
             setattr(self, attribute, temp)
-            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
-    
+            getattr(self, band).setStyleSheet(
+                "background-color: " + colors[getattr(self, attribute)] + ";"
+            )
+
     # Decrement Function
     def decrement(self, attribute, band):
         if getattr(self, attribute) > 0:
             temp = getattr(self, attribute) - 1
             setattr(self, attribute, temp)
-            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
+            getattr(self, band).setStyleSheet(
+                "background-color: " + colors[getattr(self, attribute)] + ";"
+            )
         else:
             temp = 11
             setattr(self, attribute, temp)
-            getattr(self, band).setStyleSheet("background-color: " + colors[getattr(self, attribute)] + ";")
+            getattr(self, band).setStyleSheet(
+                "background-color: " + colors[getattr(self, attribute)] + ";"
+            )
+        # calculation function
 
+    def calculate_it(self):
+        res = int(str(self.s1_color) + str(self.s2_color)) * pow(10, self.s3_color)
+        res1 = int(res) / pow(10, self.s3_color)
+
+        self.res_value.setText(str(res1))
+
+
+# Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
     ui = Ui_Dialog()
