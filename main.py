@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 # Create Variables
-# Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
+# Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, gold, silver]
 colors = [
     "#000000",
     "#8B4513",
@@ -17,12 +17,27 @@ colors = [
     "#C0C0C0",
 ]
 
+tolerance = [
+    " ±20%",
+    " ±1%",
+    " ±2%",
+    " ±3%",
+    "",
+    " ±0.5%",
+    " ±0.25%",
+    " ±0.10%",
+    " ±0.05%",
+    " ±10%",
+    " ±5%",
+    " ±10%",
+]
+
 
 class Ui_Dialog(object):
     s1_color = 2
     s2_color = 6
     s3_color = 5
-    s4_color = 3
+    s4_color = 10
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -32,7 +47,7 @@ class Ui_Dialog(object):
         self.one_up = QtWidgets.QPushButton(Dialog)
         self.one_up.setGeometry(QtCore.QRect(140, 40, 21, 21))
         self.one_up.setObjectName("one_up")
-        self.one_up.clicked.connect(lambda: self.increment("s1_color", "stripe_1"))
+        self.one_up.clicked.connect(lambda: self.increment("s1_color", "stripe_1", 9))
 
         # 1st Band
         self.stripe_1 = QtWidgets.QFrame(Dialog)
@@ -46,13 +61,13 @@ class Ui_Dialog(object):
         self.one_down = QtWidgets.QPushButton(Dialog)
         self.one_down.setGeometry(QtCore.QRect(140, 140, 21, 21))
         self.one_down.setObjectName("one_down")
-        self.one_down.clicked.connect(lambda: self.decrement("s1_color", "stripe_1"))
+        self.one_down.clicked.connect(lambda: self.decrement("s1_color", "stripe_1", 9))
 
         # 2nd Up
         self.two_up = QtWidgets.QPushButton(Dialog)
         self.two_up.setGeometry(QtCore.QRect(170, 40, 21, 21))
         self.two_up.setObjectName("two_up")
-        self.two_up.clicked.connect(lambda: self.increment("s2_color", "stripe_2"))
+        self.two_up.clicked.connect(lambda: self.increment("s2_color", "stripe_2", 9))
 
         # 2nd Band
         self.stripe_2 = QtWidgets.QFrame(Dialog)
@@ -66,13 +81,15 @@ class Ui_Dialog(object):
         self.two_down = QtWidgets.QPushButton(Dialog)
         self.two_down.setGeometry(QtCore.QRect(170, 140, 21, 21))
         self.two_down.setObjectName("two_down")
-        self.two_down.clicked.connect(lambda: self.decrement("s2_color", "stripe_2"))
+        self.two_down.clicked.connect(lambda: self.decrement("s2_color", "stripe_2", 9))
 
         # 3rd Up
         self.three_up = QtWidgets.QPushButton(Dialog)
         self.three_up.setGeometry(QtCore.QRect(200, 40, 21, 21))
         self.three_up.setObjectName("three_up")
-        self.three_up.clicked.connect(lambda: self.increment("s3_color", "stripe_3"))
+        self.three_up.clicked.connect(
+            lambda: self.increment("s3_color", "stripe_3", 11)
+        )
 
         # 3rd Band
         self.stripe_3 = QtWidgets.QFrame(Dialog)
@@ -86,13 +103,15 @@ class Ui_Dialog(object):
         self.three_down = QtWidgets.QPushButton(Dialog)
         self.three_down.setGeometry(QtCore.QRect(200, 140, 21, 21))
         self.three_down.setObjectName("three_down")
-        self.three_down.clicked.connect(lambda: self.decrement("s3_color", "stripe_3"))
+        self.three_down.clicked.connect(
+            lambda: self.decrement("s3_color", "stripe_3", 11)
+        )
 
         # 4th Up
         self.four_up = QtWidgets.QPushButton(Dialog)
         self.four_up.setGeometry(QtCore.QRect(230, 40, 21, 21))
         self.four_up.setObjectName("four_up")
-        self.four_up.clicked.connect(lambda: self.increment("s4_color", "stripe_4"))
+        self.four_up.clicked.connect(lambda: self.increment("s4_color", "stripe_4", 11))
 
         # 4th Band
         self.stripe_4 = QtWidgets.QFrame(Dialog)
@@ -106,7 +125,9 @@ class Ui_Dialog(object):
         self.four_down = QtWidgets.QPushButton(Dialog)
         self.four_down.setGeometry(QtCore.QRect(230, 140, 21, 21))
         self.four_down.setObjectName("four_down")
-        self.four_down.clicked.connect(lambda: self.decrement("s4_color", "stripe_4"))
+        self.four_down.clicked.connect(
+            lambda: self.decrement("s4_color", "stripe_4", 11)
+        )
 
         font = QtGui.QFont()
         font.setBold(True)
@@ -208,7 +229,7 @@ class Ui_Dialog(object):
         self.three_down.setText(_translate("Dialog", "▼"))
         self.four_down.setText(_translate("Dialog", "▼"))
         self.calculate.setText(_translate("Dialog", "Calculate"))
-        self.res_value.setText(_translate("Dialog", "220kΩ"))
+        self.res_value.setText(_translate("Dialog", "2.6MΩ ±5%"))
         self.comboBox.setItemText(0, _translate("Dialog", "Four"))
         self.comboBox.setItemText(1, _translate("Dialog", "Five"))
         self.comboBox.setItemText(2, _translate("Dialog", "Six"))
@@ -220,8 +241,8 @@ class Ui_Dialog(object):
         exit()
 
     # Increment Function
-    def increment(self, attribute, band):
-        if getattr(self, attribute) < 11:
+    def increment(self, attribute, band, limit):
+        if getattr(self, attribute) < limit:
             temp = getattr(self, attribute) + 1
             setattr(self, attribute, temp)
             getattr(self, band).setStyleSheet(
@@ -235,7 +256,7 @@ class Ui_Dialog(object):
             )
 
     # Decrement Function
-    def decrement(self, attribute, band):
+    def decrement(self, attribute, band, limit):
         if getattr(self, attribute) > 0:
             temp = getattr(self, attribute) - 1
             setattr(self, attribute, temp)
@@ -243,18 +264,54 @@ class Ui_Dialog(object):
                 "background-color: " + colors[getattr(self, attribute)] + ";"
             )
         else:
-            temp = 11
+            temp = limit
             setattr(self, attribute, temp)
             getattr(self, band).setStyleSheet(
                 "background-color: " + colors[getattr(self, attribute)] + ";"
             )
-        # calculation function
 
+    # Calculation Function
     def calculate_it(self):
-        res = int(str(self.s1_color) + str(self.s2_color)) * pow(10, self.s3_color)
-        res1 = int(res) / pow(10, self.s3_color)
+        # Resistance Value Calculation
+        if self.s3_color == 0:
+            res = str(self.s1_color) + str(self.s2_color) + "Ω"
 
-        self.res_value.setText(str(res1))
+        elif self.s3_color == 1:
+            res = str(self.s1_color) + str(self.s2_color) + "0" + "Ω"
+
+        elif self.s3_color == 2:
+            res = str(self.s1_color) + "." + str(self.s2_color) + "k" + "Ω"
+
+        elif self.s3_color == 3:
+            res = str(self.s1_color) + str(self.s2_color) + "k" + "Ω"
+
+        elif self.s3_color == 4:
+            res = str(self.s1_color) + str(self.s2_color) + "0" + "k" + "Ω"
+
+        elif self.s3_color == 5:
+            res = str(self.s1_color) + "." + str(self.s2_color) + "M" + "Ω"
+
+        elif self.s3_color == 6:
+            res = str(self.s1_color) + str(self.s2_color) + "M" + "Ω"
+
+        elif self.s3_color == 7:
+            res = str(self.s1_color) + str(self.s2_color) + "0" + "M" + "Ω"
+
+        elif self.s3_color == 8:
+            res = str(self.s1_color) + "." + str(self.s2_color) + "G" + "Ω"
+
+        elif self.s3_color == 9:
+            res = str(self.s1_color) + str(self.s2_color) + "G" + "Ω"
+
+        elif self.s3_color == 10:
+            res = str(self.s1_color) + "." + str(self.s2_color) + "Ω"
+
+        elif self.s3_color == 11:
+            res = "0." + str(self.s1_color) + str(self.s2_color) + "Ω"
+
+        tol = tolerance[self.s4_color]
+
+        self.res_value.setText(res + tol)
 
 
 # Color List: [black, brown, red, orange, yellow, green, blue, purple, grey, white, silver, gold]
